@@ -7,7 +7,7 @@ import * as path from "path";
 export class VideoCutService implements OnModuleInit {
   onModuleInit() {
     console.log("control in constructor");
-    const uploadPath = path.join(process.cwd(), "upload");
+    const uploadPath = path.join(process.cwd(), "uploads");
     console.log("upload path: ", uploadPath);
 
     if (!fs.existsSync(uploadPath)) {
@@ -39,7 +39,7 @@ export class VideoCutService implements OnModuleInit {
     const tasks: Promise<string>[] = [];
 
     for (let start = 0; start < totalDuration; start += interval) {
-      const output = `./upload/clip_${start}.mp4`;
+      const output = `./uploads/clip_${start}.mp4`;
 
       tasks.push(this.cut(input, start, interval, output));
     }

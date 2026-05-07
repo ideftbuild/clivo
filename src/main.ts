@@ -1,6 +1,8 @@
 import { NestFactory } from "@nestjs/core";
 import { AppModule } from "./app.module";
 import fastifyStatic from "@fastify/static";
+import multipart from "@fastify/multipart";
+
 import {
   FastifyAdapter,
   NestFastifyApplication,
@@ -14,9 +16,11 @@ async function bootstrap() {
   );
 
   await app.register(fastifyStatic, {
-    root: join(__dirname, "..", "upload"),
+    root: join(__dirname, "..", "uploads"),
     prefix: "/upload/",
   });
+
+  await app.register(multipart);
 
   await app.listen(process.env.PORT ?? 3000, "0.0.0.0");
 }

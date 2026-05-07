@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { INestApplication } from "@nestjs/common";
 import request from "supertest";
 import { App } from "supertest/types";
-import { VideoModule } from "./../src/split/video.module";
+import { VideoModule } from "../src/video/video.module";
 
 type SplitResponse = {
   success: boolean;
